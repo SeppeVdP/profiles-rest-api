@@ -4,6 +4,7 @@ from rest_framework import status
 
 from profiles_api import serializers
 
+
 class HelloApiView(APIView):
     """test api view"""
     serializer_class = serializers.HelloSerializer
@@ -11,13 +12,12 @@ class HelloApiView(APIView):
     def get(self, request, format=None):
         """returns list of epi features"""
 
-
         an_apiview = [
-                       'uses http method as function (get , post, patch, put, delete'
-                       'Is similar to a trad Django view',
-                       'Gives you the most control over you application logic',
-                       'Is mapped manually to URLs',
-                 ]
+            'uses http method as function (get , post, patch, put, delete'
+            'Is similar to a trad Django view',
+            'Gives you the most control over you application logic',
+            'Is mapped manually to URLs',
+        ]
 
         return Response({'message': 'Hello', 'an_apiview': an_apiview})
 
@@ -34,3 +34,15 @@ class HelloApiView(APIView):
                 serializer.errors,
                 status=status.HTTP_400_BAD_REQUEST
             )
+
+    def put(self,request, pk=None):
+        """"Hanle updating object"""
+        return Response({'method': 'PUT'})
+
+    def patch(self,request, pk=None):
+        """handle a partial update of an object"""
+        return Response({'method': 'PATCH'})
+
+    def delete(self, request, pk=None):
+        """Delte an update"""
+        return Response({'methodemaaktnietuit': 'Delete'})
